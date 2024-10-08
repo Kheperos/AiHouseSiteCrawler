@@ -15,7 +15,7 @@
     <h1>Google Maps Area Selection</h1>
     <div id="map"></div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <script src="config.js"></script>
     <script>
         function initMap() {
             const map = new google.maps.Map(document.getElementById('map'), {
@@ -23,6 +23,16 @@
                 zoom: 3
             });
         }
+
+        function loadGoogleMapsScript() {
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${config.GOOGLE_MAPS_API_KEY}&callback=initMap`;
+            script.async = true;
+            script.defer = true;
+            document.body.appendChild(script);
+        }
+
+        loadGoogleMapsScript();
     </script>
 </body>
 </html>
